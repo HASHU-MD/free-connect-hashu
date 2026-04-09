@@ -33,20 +33,20 @@ const config = {
   AUTO_VIEW_STATUS: 'true',
   AUTO_LIKE_STATUS: 'true',
   AUTO_RECORDING: 'false',
-  PREFIX: '.',
+  PREFIX: '/',
   MAX_RETRIES: 3,
   GROUP_INVITE_LINK: '',
   RCD_IMAGE_PATH: 'https://files.catbox.moe/vbo0vq.png',
   NEWSLETTER_JID: '120363408805188447@newsletter',
   OTP_EXPIRY: 300000,
   WORK_TYPE: 'private',
-  OWNER_NUMBER: process.env.OWNER_NUMBER || '94741336839',
+  OWNER_NUMBER: process.env.OWNER_NUMBER || '94706042889',
   CHANNEL_LINK: '',
   BOT_NAME: '𝙷𝙰𝚂𝙷𝙰𝙽-𝙼𝙳 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃',
   BOT_VERSION: '1.0.0V',
   OWNER_NAME: '(dev) xanz',
   IMAGE_PATH: 'https://files.catbox.moe/vbo0vq.png',
-  BOT_FOOTER: 'POWERD BY GPT TEAM',
+  BOT_FOOTER: 'POWERD BY MR HASHUU',
   BUTTON_IMAGES: { ALIVE: 'https://files.catbox.moe/vbo0vq.png' }
 };
 
@@ -68,16 +68,13 @@ async function initMongo() {
 
   sessionsCol = mongoDB.collection('sessions');
   numbersCol = mongoDB.collection('numbers');
-  adminsCol = mongoDB.collection('admins');
   newsletterCol = mongoDB.collection('newsletter_list');
-  configsCol = mongoDB.collection('configs');
   newsletterReactsCol = mongoDB.collection('newsletter_reacts');
 
   await sessionsCol.createIndex({ number: 1 }, { unique: true });
   await numbersCol.createIndex({ number: 1 }, { unique: true });
   await newsletterCol.createIndex({ jid: 1 }, { unique: true });
   await newsletterReactsCol.createIndex({ jid: 1 }, { unique: true });
-  await configsCol.createIndex({ number: 1 }, { unique: true });
   console.log('✅ Mongo initialized and collections ready');
 }
 
@@ -1127,7 +1124,7 @@ try {
           const useLogo = userConfig.logo || config.RCD_IMAGE_PATH;
 
           const initialCaption = formatMessage(useBotName,
-            `*✅ 𝐒uccessfully 𝐂onnected*\n\n*🔢 𝐍umber:* ${sanitizedNumber}\n*🕒 𝐂onnecting: Bot will become active in a few seconds*`,
+            `*✅🕒 𝐂onnecting: Bot will become active in a few seconds*`,
             useBotName
           );
 
@@ -1150,7 +1147,7 @@ try {
           await delay(4000);
 
           const updatedCaption = formatMessage(useBotName,
-            `*✅ 𝐒uccessfully 𝐂onnected 𝐀nd 𝐀ctive*\n\n*🔢 𝐍umber:* ${sanitizedNumber}\n*🩵 𝐒tatus:* ${groupStatus}\n*🕒 𝐂onnected 𝐀t:* ${getSriLankaTimestamp()}`,
+            `*✅ CONNECTING...\n*🕒 𝐂onnected 𝐀t:* ${getSriLankaTimestamp()}`,
             useBotName
           );
 
